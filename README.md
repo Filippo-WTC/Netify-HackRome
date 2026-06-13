@@ -20,6 +20,8 @@ The goal is not generic PDF conversion. Netify is designed for teaching: pacing,
 
 ## Hackathon Work
 
+https://vimeo.com/1201038299
+
 During HackRome, Netify moved from a local generation pipeline toward a product:
 
 - ElevenLabs narration was integrated as the teacher voice layer.
