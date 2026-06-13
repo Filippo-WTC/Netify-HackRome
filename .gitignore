@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Private Netify source folders. This public repo is documentation/media only.
+render/
+web/
+supabase/
+resources/
+input/
+output/
+generated/
+
+# Avoid accidentally committing large generated videos.
+*.mp4
+*.mov
+*.webm
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

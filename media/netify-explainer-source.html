@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Netify HackRome Explainer Source Brief</title>
+  <style>
+    @page {
+      size: Letter;
+      margin: 0.72in 0.78in 0.76in 0.78in;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #172033;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 10.8pt;
+      line-height: 1.42;
+      background: #fff;
+    }
+
+    .cover {
+      min-height: 8.85in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.12in 0 0;
+      break-after: page;
+    }
+
+    .kicker {
+      color: #2474a6;
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16pt;
+    }
+
+    h1 {
+      margin: 0;
+      color: #0b2545;
+      font-size: 31pt;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 6.25in;
+      margin-top: 16pt;
+      color: #44546a;
+      font-size: 14.5pt;
+      line-height: 1.34;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10pt;
+      margin-top: 28pt;
+    }
+
+    .meta-card {
+      border: 1px solid #d9e2ec;
+      border-radius: 4px;
+      padding: 12pt;
+      background: #f7fafc;
+    }
+
+    .meta-label {
+      color: #52616f;
+      font-size: 8.8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 3pt;
+    }
+
+    .meta-value {
+      color: #14213d;
+      font-size: 11pt;
+      font-weight: 650;
+    }
+
+    .rule {
+      height: 3px;
+      width: 1.35in;
+      margin: 34pt 0 0;
+      background: #88e649;
+    }
+
+    .cover-note {
+      color: #52616f;
+      font-size: 9.6pt;
+      max-width: 5.7in;
+    }
+
+    h2 {
+      margin: 0 0 8pt;
+      color: #0b2545;
+      font-size: 17pt;
+      line-height: 1.16;
+      break-after: avoid;
+    }
+
+    h3 {
+      margin: 14pt 0 5pt;
+      color: #2474a6;
+      font-size: 12.7pt;
+      line-height: 1.2;
+      break-after: avoid;
+    }
+
+    p {
+      margin: 0 0 7pt;
+    }
+
+    ul, ol {
+      margin: 0 0 9pt 19pt;
+      padding: 0;
+    }
+
+    li {
+      margin: 0 0 4.5pt;
+    }
+
+    .section {
+      break-inside: avoid;
+      margin-bottom: 18pt;
+    }
+
+    .page {
+      break-after: page;
+    }
+
+    .lead {
+      color: #29384f;
+      font-size: 12pt;
+      line-height: 1.38;
+      margin-bottom: 12pt;
+    }
+
+    .callout {
+      margin: 12pt 0 14pt;
+      border-left: 4px solid #88e649;
+      background: #f4fbef;
+      padding: 10pt 12pt;
+      break-inside: avoid;
+    }
+
+    .callout strong {
+      color: #0b2545;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14pt;
+      align-items: start;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10pt;
+      align-items: stretch;
+      margin: 9pt 0 12pt;
+    }
+
+    .card {
+      border: 1px solid #d9e2ec;
+      border-radius: 4px;
+      padding: 10pt 11pt;
+      background: #fff;
+      break-inside: avoid;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 11.5pt;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 0 5pt 5pt 0;
+      padding: 3pt 6pt;
+      border: 1px solid #c8d3df;
+      border-radius: 999px;
+      color: #334e68;
+      background: #f7fafc;
+      font-size: 8.8pt;
+      font-weight: 650;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8pt 0 13pt;
+      break-inside: avoid;
+      table-layout: fixed;
+    }
+
+    th {
+      background: #f2f4f7;
+      color: #0b2545;
+      text-align: left;
+      font-weight: 700;
+      border: 1px solid #d6dde6;
+      padding: 7pt 8pt;
+      vertical-align: middle;
+    }
+
+    td {
+      border: 1px solid #d6dde6;
+      padding: 7pt 8pt;
+      vertical-align: top;
+    }
+
+    .compact td,
+    .compact th {
+      padding: 6pt 7pt;
+      font-size: 9.7pt;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 28pt 1fr;
+      gap: 8pt;
+      margin: 0 0 8pt;
+      break-inside: avoid;
+    }
+
+    .num {
+      width: 24pt;
+      height: 24pt;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b2545;
+      color: #fff;
+      font-size: 9.5pt;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: #0b2545;
+      margin-bottom: 1pt;
+    }
+
+    .script-box {
+      border: 1px solid #d9e2ec;
+      border-radius: 4px;
+      padding: 10pt 12pt;
+      background: #fbfcfd;
+      margin: 10pt 0 13pt;
+      break-inside: avoid;
+    }
+
+    .script-box p {
+      margin-bottom: 5pt;
+    }
+
+    .footer-note {
+      margin-top: 18pt;
+      padding-top: 9pt;
+      border-top: 1px solid #d9e2ec;
+      color: #67758a;
+      font-size: 8.8pt;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9.4pt;
+      color: #0b2545;
+      background: #f2f4f7;
+      padding: 1pt 3pt;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="cover">
+      <div>
+        <div class="kicker">HackRome demo source brief</div>
+        <h1>Netify</h1>
+        <div class="subtitle">The AI layer that turns PDFs into narrated, animated video lessons.</div>
+        <div class="rule"></div>
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="meta-label">Elevator pitch</div>
+            <div class="meta-value">Turn any learning PDF into a custom animated teacher-led video.</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Demo proof</div>
+            <div class="meta-value">The submitted explainer video should be generated by Netify itself.</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Hackathon work</div>
+            <div class="meta-value">ElevenLabs narration, Supabase product layer, web app flow, and API foundation.</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Current status</div>
+            <div class="meta-value">Local generation works; durable cloud rendering is the next step.</div>
+          </div>
+        </div>
+      </div>
+      <p class="cover-note">This PDF is written so Netify can generate a Devpost-ready demo video from it. It emphasizes the personal learning origin, the teacher voice, the HackRome build, and the honest self-generated proof.</p>
+    </section>
+
+    <section class="page">
+      <div class="section">
+        <h2>1. The New Story Angle</h2>
+        <p class="lead">Netify started from a personal learning problem: I have high school exams in a week, and I learn better from videos than from static documents.</p>
+        <p>A PDF can contain everything a student needs to know, but a PDF does not always teach. A good lesson has pacing, emphasis, examples, visuals, and a voice that guides the learner through the material. Netify exists to give documents that teaching layer.</p>
+        <p>The broader product insight is that students, edtech startups, and corporate training teams all face the same bottleneck. They already have written learning content, but producing useful video lessons is slow, expensive, and hard to scale.</p>
+        <div class="callout"><strong>Main perspective:</strong> Netify is not just PDF-to-video. Netify is PDF-to-video lessons. The goal is teaching, not conversion.</div>
+      </div>
+
+      <div class="section">
+        <h2>2. What Netify Does</h2>
+        <p>Netify transforms documents into narrated video lessons. A user uploads a PDF. Netify parses the document, extracts the core ideas, plans how to teach them, generates custom animated scenes, creates narration with ElevenLabs, renders the final MP4, and streams progress while the job runs.</p>
+        <p>The output is not a slide deck with a voice track. Each scene is generated around the function it needs to serve: explaining a concept, comparing two ideas, showing a process, highlighting a statistic, or making dense material easier to remember.</p>
+      </div>
+
+      <div class="three-col">
+        <div class="card">
+          <h3>For students</h3>
+          <p>Turn exam PDFs, lecture notes, and dense study material into guided video lessons.</p>
+        </div>
+        <div class="card">
+          <h3>For edtech</h3>
+          <p>Add video lesson generation without building a media pipeline from scratch.</p>
+        </div>
+        <div class="card">
+          <h3>For training</h3>
+          <p>Convert onboarding, compliance, and internal knowledge into watchable instruction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section">
+        <h2>3. Why It Matters</h2>
+        <p>Edtech is full of written content. Financial education PDFs, language-learning notes, corporate onboarding guides, compliance policies, exam summaries, and course handouts all share the same weakness: they require the learner to create structure and momentum alone.</p>
+        <p>Video lessons solve that problem by adding guidance. They decide what comes first, what matters most, what example makes the concept click, and when the learner needs visual reinforcement. Netify automates that transformation.</p>
+        <div class="two-col">
+          <div class="card">
+            <h3>Static document</h3>
+            <ul>
+              <li>Information exists, but pacing is missing.</li>
+              <li>The learner must decide what matters.</li>
+              <li>Dense sections are easy to skip.</li>
+              <li>No teacher voice or emotional guidance.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Netify lesson</h3>
+            <ul>
+              <li>Ideas are sequenced into scenes.</li>
+              <li>Visuals are matched to the teaching job.</li>
+              <li>ElevenLabs narration gives the lesson a voice.</li>
+              <li>The final result is an MP4 people can watch.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>4. The Product Built During HackRome</h2>
+        <p>Netify existed before HackRome as a local generation pipeline. During the hackathon, the focus was turning that pipeline into the beginning of a real product.</p>
+        <table class="compact">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Area</th>
+              <th>HackRome progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Teacher narration</td><td>Integrated ElevenLabs TTS with <code>eleven_multilingual_v2</code>, scene-level MP3 generation, retry logic, and audio-duration detection.</td></tr>
+            <tr><td>Product backbone</td><td>Connected Supabase Auth, Postgres tables, private resource storage, private video storage, and row-level security.</td></tr>
+            <tr><td>Web app flow</td><td>Built a local flow where users can sign in, upload PDFs, store resources, start generation, watch progress, and view generated videos.</td></tr>
+            <tr><td>Developer API</td><td>Added the foundation for asynchronous render jobs, Bearer auth, signed PDF handoff, SSE progress, and Supabase upload of completed MP4s.</td></tr>
+            <tr><td>Render reliability</td><td>Improved validation and repair loops for generated Remotion/TypeScript scenes so the product can recover from common generation failures.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section">
+        <h2>5. How the Pipeline Works</h2>
+        <div class="step">
+          <div class="num">1</div>
+          <div><div class="step-title">Upload a learning PDF</div><p>The source can be study material, a course PDF, financial literacy content, onboarding material, or a corporate training document.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div><div class="step-title">Understand the material</div><p>LLM agents parse the document, identify the core ideas, and decide what a learner needs to understand.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div><div class="step-title">Plan how to teach it</div><p>The system creates a lesson structure, not only a summary. It decides what deserves a scene, what example helps, and what visual form fits.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div><div class="step-title">Generate custom animated scenes</div><p>Netify writes Remotion/TypeScript scene code with layouts, motion, icons, charts, comparisons, and transitions based on the source material.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <div><div class="step-title">Add ElevenLabs teacher narration</div><p>Each scene gets an MP3 voiceover. The narration makes the video feel guided instead of silent or mechanical.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">6</div>
+          <div><div class="step-title">Render, repair, and deliver</div><p>Remotion renders the final MP4. If generated code fails, the repair layer diagnoses the scene or transition, patches it, and retries.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>6. Why ElevenLabs Is Central</h2>
+        <p>Voice is not a small add-on for an education product. A lesson needs a teacher voice. ElevenLabs changes the emotional quality of the output because the final video feels guided, not just animated.</p>
+        <p>For the demo, emphasize that ElevenLabs is what turns Netify from "moving text" into instruction. The voice gives pacing, confidence, and a human sense of direction.</p>
+        <div class="callout"><strong>Prize positioning:</strong> ElevenLabs is the strongest sponsor fit because the hackathon-new TTS integration directly improves Netify's core user experience.</div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section">
+        <h2>7. Current Product Surfaces</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>Local web app</h3>
+            <p>Users can sign in, upload source PDFs into private Supabase storage, start video generation, watch live progress, and return to a generated video library.</p>
+            <p><span class="tag">Next.js</span><span class="tag">Supabase Auth</span><span class="tag">Private storage</span><span class="tag">Video library</span></p>
+          </div>
+          <div class="card">
+            <h3>API foundation</h3>
+            <p>A backend can submit a signed PDF URL, start an asynchronous render job, authenticate with a Bearer token, and stream progress with Server-Sent Events.</p>
+            <p><span class="tag">POST /api/render</span><span class="tag">GET /api/events/:jobId</span><span class="tag">Bearer auth</span><span class="tag">MP4 output</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>8. Honest Demo Status</h2>
+        <p>The render service currently runs locally. The cloud render backend is designed to become a durable containerized service, but deployment was blocked during the hackathon because the Scaleway setup required a credit card even with hackathon credits available.</p>
+        <p>This should be framed honestly in the video if needed: Netify is a working local product demo with cloud-ready architecture. The next step is durable hosted rendering so judges, students, and edtech teams can generate videos directly.</p>
+        <div class="callout"><strong>Strongest proof:</strong> The demo video explaining Netify should itself be generated by Netify from this PDF.</div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section">
+        <h2>9. Suggested Devpost Video Narrative</h2>
+        <p class="lead">The video should feel personal first, product second, infrastructure third. Lead with the exam/student pain, then expand into edtech.</p>
+        <table class="compact">
+          <thead>
+            <tr>
+              <th style="width: 16%;">Scene</th>
+              <th style="width: 33%;">Main message</th>
+              <th>Visual direction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Personal hook</td><td>I have exams soon, and I learn better from videos than static PDFs.</td><td>Student desk, dense PDF, exam countdown, video lesson appearing as relief.</td></tr>
+            <tr><td>2. Bigger problem</td><td>Edtech and training teams have content, but producing video is slow.</td><td>Stacks of documents on one side, empty video player on the other.</td></tr>
+            <tr><td>3. Netify promise</td><td>Netify turns learning PDFs into narrated animated video lessons.</td><td>PDF enters a pipeline and exits as an MP4 with waveform and animated scenes.</td></tr>
+            <tr><td>4. Teaching pipeline</td><td>Understand, plan, generate scenes, narrate, render.</td><td>Six-step animated flow with teaching-focused labels.</td></tr>
+            <tr><td>5. ElevenLabs moment</td><td>A video lesson needs a teacher voice.</td><td>Audio waveform, voice avatar, scene timing syncing with narration.</td></tr>
+            <tr><td>6. HackRome build</td><td>The local pipeline became a product foundation.</td><td>Four cards: ElevenLabs, Supabase, web app, API.</td></tr>
+            <tr><td>7. Self-demo proof</td><td>This video was generated by Netify itself.</td><td>Recursive proof: this PDF turning into the video being watched.</td></tr>
+            <tr><td>8. Close</td><td>Content in, video lesson out.</td><td>Final generated lesson inside a learning platform.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>10. Recommended 90-Second Voiceover</h2>
+        <div class="script-box">
+          <p>Netify is the AI layer that turns PDFs into video lessons.</p>
+          <p>I started from a personal problem: I have high school exams in a week, and I learn much better from videos than from static documents. But the same problem exists across edtech. Teams already have learning content, but producing video takes weeks or months.</p>
+          <p>Netify takes a PDF, understands the material, plans how to teach it, generates custom animated scenes, creates narration with ElevenLabs, renders an MP4, and streams progress while the job runs.</p>
+          <p>This is not a slide generator. The visuals are generated around the function of each scene: explaining, comparing, showing a process, or making a concept easier to remember.</p>
+          <p>During HackRome, I turned the local pipeline into the start of a product: ElevenLabs narration, Supabase auth and storage, a web app flow, and the foundation of the Netify API.</p>
+          <p>The video you are watching was generated by Netify itself. Content in, video lesson out.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section">
+        <h2>11. Phrases to Preserve</h2>
+        <ul>
+          <li>Netify is the AI layer that turns PDFs into narrated, animated video lessons.</li>
+          <li>Turn any learning PDF into a custom animated teacher-led video.</li>
+          <li>A PDF can contain everything, but it does not always teach.</li>
+          <li>This is not a slide generator.</li>
+          <li>A lesson needs a teacher voice.</li>
+          <li>During HackRome, the local pipeline became the start of a real product.</li>
+          <li>The demo video was generated by Netify itself.</li>
+          <li>Content in, video lesson out.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>12. What to Avoid in the Video</h2>
+        <ul>
+          <li>Do not make the story only about API infrastructure. The Devpost angle is learning, teaching, and the HackRome build.</li>
+          <li>Do not overclaim that the hosted cloud service is fully deployed. The honest current state is local render with cloud-ready architecture.</li>
+          <li>Do not say Netify uses OpenAI models unless the submitted demo actually does. The current backend uses DeepSeek through an OpenAI-compatible interface.</li>
+          <li>Do not frame the output as generic AI video. The specific promise is video lessons from learning PDFs.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>13. Final Positioning</h2>
+        <p>Netify takes learning content that already exists and turns it into a guided video lesson. It combines document understanding, lesson planning, generated animated scenes, ElevenLabs narration, Remotion rendering, repair loops, Supabase-backed product infrastructure, and an API foundation.</p>
+        <p>The clearest Devpost proof is simple: use Netify to generate the video that explains Netify.</p>
+      </div>
+
+      <p class="footer-note">Prepared from the Netify Devpost submission, API documentation, and current repository state. Intended as source material for a HackRome demo video generated by Netify.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: Netify API
+  version: 0.1.0
+  description: API contract for starting Netify PDF-to-video jobs and streaming progress.
+servers:
+  - url: http://localhost:3002
+    description: Local HackRome render service
+  - url: https://your-netify-render.example.com
+    description: Hosted Netify render service
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      summary: Health check
+      security: []
+      responses:
+        "200":
+          description: Netify API is reachable.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                required:
+                  - ok
+  /api/render:
+    post:
+      summary: Start a PDF-to-video render job
+      description: Accepts a downloadable PDF URL and starts the Netify render pipeline asynchronously.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenderRequest"
+      responses:
+        "200":
+          description: Job accepted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RenderAccepted"
+        "400":
+          description: Missing required fields.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /api/events/{jobId}:
+    get:
+      summary: Stream render progress
+      description: Server-Sent Events stream. Each data payload is JSON with `message` and `pct`.
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 9f9c15f4-8359-4f98-a3ef-30b4038cfc64
+      responses:
+        "200":
+          description: SSE stream of progress messages.
+          content:
+            text/event-stream:
+              schema:
+                type: string
+              examples:
+                progress:
+                  value: |
+                    : connected
+
+                    data: {"message":"Starting pipeline...","pct":5}
+
+                    data: {"message":"Done!","pct":100}
+        "401":
+          description: Invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    RenderRequest:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: Stable job/video ID. UUID recommended.
+          example: 9f9c15f4-8359-4f98-a3ef-30b4038cfc64
+        pdfUrl:
+          type: string
+          format: uri
+          description: Public or signed URL for the source PDF.
+          example: https://your-storage.example.com/source.pdf
+        userId:
+          type: string
+          description: Owner/customer ID used for final video storage or tracking.
+          example: customer_123
+        prompt:
+          type: string
+          description: Optional creative or instructional guidance.
+          example: Create a concise onboarding video for new employees.
+      required:
+        - jobId
+        - pdfUrl
+        - userId
+    RenderAccepted:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          example: true
+        jobId:
+          type: string
+          example: 9f9c15f4-8359-4f98-a3ef-30b4038cfc64
+      required:
+        - ok
+        - jobId
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: invalid api key
+      required:
+        - error
