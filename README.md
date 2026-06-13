@@ -34,10 +34,6 @@ The render backend currently runs locally. The final Devpost demo video is gener
 
 [media/netify-explainer-source.pdf](media/netify-explainer-source.pdf)
 
-When the generated video is ready, add the public video link to:
-
-[media/final-demo-video-url.md](media/final-demo-video-url.md)
-
 ## Repository Map
 
 - [docs/devpost-submission.md](docs/devpost-submission.md): Devpost submission draft and judging notes.
@@ -47,19 +43,4 @@ When the generated video is ready, add the public video link to:
 - [api/README.md](api/README.md): public API contract for the render service.
 - [api/openapi.yaml](api/openapi.yaml): OpenAPI description of the API surface.
 - [api/examples](api/examples): minimal integration examples.
-- [media](media): explainer PDF, source HTML, preview image, and final video link placeholder.
-
-## Public Boundary
-
-This repo is safe to publish because it contains documentation and demo material only. The valuable Netify implementation remains private.
-
-Do not add these folders or files to this public repo:
-
-- `render/`
-- `web/`
-- generated scene code
-- pipeline repair logic
-- model prompts
-- `.env` files
-- API keys or provider credentials
-- raw private customer PDFs
+- [media](media): explainer PDF, source HTML, preview image, and final video link.
