@@ -2,7 +2,7 @@
 
 Netify is the AI layer that turns PDFs into narrated, animated video lessons.
 
-This repository is the public HackRome submission package for Netify. It includes the story, API contract, demo source material, and public-facing notes from the hackathon build. It intentionally does not include the proprietary generation pipeline, render service source code, web app source code, model prompts, repair logic, provider keys, or generated internals.
+This repository is the public HackRome submission package for Netify. It includes the story, API contract, demo source material, and public-facing notes from the hackathon build.
 
 ## What Netify Does
 
